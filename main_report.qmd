@@ -1,0 +1,58 @@
+---
+title: "Kajian Banjir 100 Tahunan Landfill B3 `r params$pt`"
+format: html
+editor: visual
+params: 
+  pt: PT. Well Harvest Wining
+  kecamatan: Kendawangan
+  kabupaten: Ketapang
+  provinsi: Kalimantan Barat
+  sungai: Sungai Tengar
+bibliography: references.bib
+---
+
+# Umum
+
+Salah satu persyaratan yang harus dipenuhi dalam penentuan kelayakan lokasi landfill B3 `r params$pt` di Kecamatan `r params$kecamatan` Kabupaten `r params$kabupaten`, Provinsi `r params$provinsi` adalah kajian hidrologi tentang analisa bebas banjir. Lokasi landfill terpilih harus mempunyai resiko yang paling minimal terkena dampak akibat banjir, bahkan kalau bisa terbebas dari genangan akibat banjir.
+
+Banjir merupakan peristiwa meluapnya air sungai melebihi palung sungai atau genangan air yang terjadi pada daerah yang rendah dan tidak bisa terdrainasikan [@sni2415:2016]. Kajian mengenai banjir merupakan salah satu bagian yang penting dalam melakukan berbagai analisis, baik analisa untuk infrastruktur, saluran drainase, atau jembatan.
+
+Dalam kajian banjir, besarnya (magnitude) debit didefinisikan sebagai kala ulang atau periode ulang. Dimana kala ulang merupakan waktu hipotetik dimana probabilitas kejadian debit atau hujan dengan besaran tertentu akan disamai atau dilampaui sekali dalam jangka waktu tersebut [@permenpuprnomor12/prt/m/2014].
+
+Untuk melakukan kajian bebas banjir ini terdiri dari dua tahapan analisa. Yang pertama adalah analisa hidrologi dimana output dari analisa ini adalah nilai debit banjir pada berbagai kala ulang. Tahapan yang kedua adalah analisa hidrolika dimana nilai debit banjir yang telah dihitung tadi dimodelkan/disimulasikan hingga memperoleh tinggi muka air banjir serta karakteristik hidrolik lainnya seperti kecepatan dan luas genangan.
+
+```{r}
+a <- 2
+```
+
+# Data 
+
+# Metode Studi
+
+# Analisa Hidrologi
+
+## *Catchment Area* (CA)
+
+## Kondisi Curah Hujan
+
+## Analisa Frekuensi
+
+### Distribusi Normal
+
+### Distribusi Log-Normal
+
+### Distribusi Log Pearson III
+
+### Distribusi Gumbel
+
+### Ringkasan Analisa Desain Curah Hujan
+
+### Penentuan Distribusi Hujan
+
+## Koefisien C
+
+## Analisa Debit Banjir
+
+## Analisa Hidrolika
+
+# Daftar Pustaka
