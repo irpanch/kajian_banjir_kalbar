@@ -8,6 +8,8 @@ params:
   kabupaten: Ketapang
   provinsi: Kalimantan Barat
   sungai: Sungai Tengar
+  sta_hujan: Stasiun Rahadi Oesman
+  panjang_hujan: '20 Tahun'
 bibliography: references.bib
 ---
 
@@ -25,7 +27,13 @@ Untuk melakukan kajian bebas banjir ini terdiri dari dua tahapan analisa. Yang p
 a <- 2
 ```
 
-# Data 
+# Data
+
+Data-data yang digunakan dalam kajian ini adalah:
+
+1.  Data pengukuran topografi lapangan
+2.  Data hujan `r params$sta_hujan` selama `r params$panjang_hujan`
+3.  Data tutupan lahan dari KLHK
 
 # Metode Studi
 
