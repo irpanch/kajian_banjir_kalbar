@@ -27,13 +27,17 @@ Untuk melakukan kajian bebas banjir ini terdiri dari dua tahapan analisa. Yang p
 a <- 2
 ```
 
-# Data
+# Data dan Metode Studi
 
-Data-data yang digunakan dalam kajian ini adalah:
+Untuk melakukan kajian bebas banjir ini terdiri dari dua tahapan analisa. Yang pertama adalah analisa hidrologi dimana output dari analisa ini adalah nilai debit banjir pada berbagai kala ulang. Tahapan yang kedua adalah analisa hidrolika dimana nilai debit banjir yang telah dihitung tadi dimodelkan/disimulasikan hingga memperoleh tinggi muka air banjir serta karakteristik hidrolik lainnya.
 
-1.  Data pengukuran topografi lapangan
-2.  Data hujan `r params$sta_hujan` selama `r params$panjang_hujan`
-3.  Data tutupan lahan dari KLHK
+Data analisa hidrologi dan hidrolika ini data-data yang dikumpulkan adalah sebagai berikut:
+
+1.  Peta DEM Nasional Resolusi 8.4 x 8.4 meter dariBadan Informasi Geospasial.
+2.  Peta Topografi dan Sungai Skala 1:25.000 dari Badan Informasi Geospasial
+3.  Peta Lokasi Landfill `r params$pt`
+4.  Data hujan `r params$sta_hujan` selama `r params$panjang_hujan`
+5.  Data tutupan lahan dari KLHK
 
 # Metode Studi
 
