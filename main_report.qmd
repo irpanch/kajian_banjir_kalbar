@@ -27,23 +27,24 @@ Untuk melakukan kajian bebas banjir ini terdiri dari dua tahapan analisa. Yang p
 a <- 2
 ```
 
-# Data dan Metode Studi
+# Ketersediaan Data
 
-Untuk melakukan kajian bebas banjir ini terdiri dari dua tahapan analisa. Yang pertama adalah analisa hidrologi dimana output dari analisa ini adalah nilai debit banjir pada berbagai kala ulang. Tahapan yang kedua adalah analisa hidrolika dimana nilai debit banjir yang telah dihitung tadi dimodelkan/disimulasikan hingga memperoleh tinggi muka air banjir serta karakteristik hidrolik lainnya.
+Untuk melakukan kajian bebas banjir ini diperlukan data-data primer maupun sekunder yang dikumpulkan untuk kemudian diolah dan dianalisis sehingga menghasilkan informasi yang memadai sebagai dasar dari laporan hidrologi. Data primer didapatkan dari pengambilan data langsung di lapangan saat tahap pekerjaan lapangan berlangsung, sedangkan data sekunder didapatkan dari sumber lain yang telah ada sebelumnya. Rangkuman data yang digunakan pada penelitian ini baik primer maupun
+sekunder adalah sebagai berikut:
 
-Data analisa hidrologi dan hidrolika ini data-data yang dikumpulkan adalah sebagai berikut:
+| No  | Data                            | Jenis Data    | Sumber Data          |
+|:---:|---------------------------------|---------------|----------------------|
+|  1  | Data topografi                  | Data Primer   | Pengukuran Topografi |
+|  2  | Data Batas Landfill             | Data Primer   | `r params$pt`        |
+|  3  | Digital Elevation Model (DEM)   | Data Sekunder | DEMNAS               |
+|  4  | Data Hujan `r params$sta_hujan` | Data Sekunder | BMKG                 |
+|  5  | Data Tutupan Lahan              | Data Sekunder | KLHK                 |
 
-1.  Peta DEM Nasional Resolusi 8.4 x 8.4 meter dariBadan Informasi Geospasial.
-2.  Peta Topografi dan Sungai Skala 1:25.000 dari Badan Informasi Geospasial
-3.  Peta Lokasi Landfill `r params$pt`
-4.  Data hujan `r params$sta_hujan` selama `r params$panjang_hujan`
-5.  Data tutupan lahan dari KLHK
+: Rangkuman Data Yang Digunakan Pada Kajian Ini
 
-# Metode Studi
+# *Catchment Area* (CA)
 
-# Analisa Hidrologi
-
-## *Catchment Area* (CA)
+# Analisa Curah Hujan
 
 ## Kondisi Curah Hujan
 
@@ -61,10 +62,12 @@ Data analisa hidrologi dan hidrolika ini data-data yang dikumpulkan adalah sebag
 
 ### Penentuan Distribusi Hujan
 
-## Koefisien C
+## Koefisien Pengaliran
 
-## Analisa Debit Banjir
+## Hujan Efektif
 
-## Analisa Hidrolika
+# Analisa Debit Banjir
+
+# Analisa Hidrolika
 
 # Daftar Pustaka
