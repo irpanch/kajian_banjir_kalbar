@@ -1,6 +1,8 @@
 ---
 title: "Kajian Banjir 100 Tahunan Landfill B3 `r params$pt`"
-format: html
+format: 
+  html:
+    css: style.css
 number-sections: true
 editor: visual
 params: 
@@ -16,6 +18,11 @@ params:
   jarak_ke_sta: '3.4 Km'
   luas_ca: '32.01 Ha'
 bibliography: references.bib
+crossref: 
+  fig-title: 'Gambar'
+  tbl-title: 'Tabel'
+  fig-prefix: Gambar
+  tbl-prefix: Tabel
 ---
 
 # Umum
@@ -34,7 +41,7 @@ a <- 2
 
 # Ketersediaan Data
 
-Untuk melakukan kajian bebas banjir ini diperlukan data-data primer maupun sekunder yang dikumpulkan untuk kemudian diolah dan dianalisis sehingga menghasilkan informasi yang memadai sebagai dasar dari laporan hidrologi. Data primer didapatkan dari pengambilan data langsung di lapangan saat tahap pekerjaan lapangan berlangsung, sedangkan data sekunder didapatkan dari sumber lain yang telah ada sebelumnya. Rangkuman data yang digunakan pada penelitian ini baik primer maupun sekunder adalah sebagai berikut:
+Untuk melakukan kajian bebas banjir ini diperlukan data-data primer maupun sekunder yang dikumpulkan untuk kemudian diolah dan dianalisis sehingga menghasilkan informasi yang memadai sebagai dasar dari laporan hidrologi. Data primer didapatkan dari pengambilan data langsung di lapangan saat tahap pekerjaan lapangan berlangsung, sedangkan data sekunder didapatkan dari sumber lain yang telah ada sebelumnya. Rangkuman data yang digunakan pada penelitian ini baik primer maupun sekunder ditampilkan dalam @tbl-data berikut:
 
 | No  | Data                            | Jenis Data    | Sumber Data          |
 |:---:|---------------------------------|---------------|----------------------|
@@ -44,23 +51,23 @@ Untuk melakukan kajian bebas banjir ini diperlukan data-data primer maupun sekun
 |  4  | Data Hujan `r params$sta_hujan` | Data Sekunder | BMKG                 |
 |  5  | Data Tutupan Lahan              | Data Sekunder | KLHK                 |
 
-: Rangkuman Data Yang Digunakan Pada Kajian Ini
+: Rangkuman Data Yang Digunakan Pada Kajian Ini {#tbl-data}
 
 # *Catchment Area* (CA)
 
 Untuk dapat menghitung debit banjir, diperlukan 2 (dua) inputan data utama. Input yang pertama adalah karakteristik dari catchment area (CA) yang ditinjau seperti luasan, panjang sungai, dan kemiringan sungai. Kemudian input kedua yang diperlukan adalah curah hujan rencana.
 
-Untuk data karakteristik CA diperoleh dari deliniasi peta rupa bumi Indonesia (RBI). Hasil deliniasi menunjukkan terdapat satu CA di sekitar tapak proyek dengan luasan `r params$luas_ca`.
+Untuk data karakteristik CA diperoleh dari deliniasi peta rupa bumi Indonesia (RBI). Hasil deliniasi menunjukkan terdapat satu CA di sekitar tapak proyek dengan luasan `r params$luas_ca`. Gambar CA dapat dilihat pada @fig-ca dibawah ini.
 
-![Peta Catchment Area](figures/ca.png){fig-align="center" width="563"}
+![Peta Catchment Area](figures/ca.png){#fig-ca fig-align="center" width="563"}
 
 # Data dan Analisa Curah Hujan
 
 ## Kondisi Curah Hujan
 
-Data hujan yang digunakan mempunyai panjang waktu pengamatan selama `r params$panjang_hujan` dari tahun `r params$awal_hjn`hingga tahun `r params$akhir_hjn` yang bersumber pada `r params$sta_hjn`, berlokasi ±`r params$jarak_ke_sta` dari lokasi pekerjaan (Gambar 2). Berikut ditampilkan lokasi dan data curah hujan maksimum harian serta jumlah curah hujan bulanan rata-rata berupa tabel dan grafik pada stasiun tersebut.
+Data hujan yang digunakan mempunyai panjang waktu pengamatan selama `r params$panjang_hujan` dari tahun `r params$awal_hjn`hingga tahun `r params$akhir_hjn` yang bersumber pada `r params$sta_hjn`, berlokasi ±`r params$jarak_ke_sta` dari lokasi pekerjaan ( @fig-stahujan ). Berikut ditampilkan lokasi dan data curah hujan maksimum harian serta jumlah curah hujan bulanan rata-rata berupa tabel dan grafik pada stasiun tersebut.
 
-![Lokasi Stasiun Hujan Terhadap Lokasi Proyek](figures/ca_sta_hujan.png)
+![Lokasi Stasiun Hujan Terhadap Lokasi Proyek](figures/ca_sta_hujan.png){#fig-stahujan}
 
 ## Analisa Frekuensi
 
@@ -84,4 +91,4 @@ Data hujan yang digunakan mempunyai panjang waktu pengamatan selama `r params$pa
 
 # Analisa Hidrolika
 
-# Daftar Pustaka
+# Daftar Pustaka  {.unnumbered}
