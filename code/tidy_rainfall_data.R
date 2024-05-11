@@ -48,7 +48,7 @@ g <- ggplot(data,aes(x=Date, y=rahadi_oesman))+geom_line(col="blue3") +
 
 data_date <- as.POSIXct(data$Date)
 
-g2 <- g + scale_x_datetime(
+g2 <- g + scale_x_date(
   breaks = seq(min(data$Date),max(data$Date),length=6),date_labels = "%b-%y")
 
 g2
