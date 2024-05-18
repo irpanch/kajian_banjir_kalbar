@@ -88,6 +88,35 @@ div.csl-indent {
 <link href="main_report_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="main_report_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -127,8 +156,19 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="ketersediaan-data" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Ketersediaan Data</h1>
+<section id="kriteria-desain-dan-aturan-terkait" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Kriteria Desain dan Aturan Terkait</h1>
+<p>Sebagai panduan (<em>guidelines</em>) dalam melakukan kajian banjir ini didasarkan pada beberapa aturan dan jurnal terkait sebagai berikut:</p>
+<ul>
+<li><p>Undang-undang No.&nbsp;17 Tahun 2019 Tentang Sumber Daya Air</p></li>
+<li><p>SNI 2415:2016 Tentang Tata Cara Perhitungan Debit Banjir Rencana</p></li>
+<li><p>SNI 7746:2012 Tentang Tata Cara Perhitungan Hujan Maksimum Boleh Jadi Dengan Metode Hersfield</p></li>
+<li><p>SNI 1724:2015 Tentang Analisis Hidrologi, Hidraulik, dan Kriteria Desain Bangunan Sungai</p></li>
+<li><p>Natakusumah, D. K., Hatmoko, W., &amp; Harlan, D. (2011). Prosedur Umum Perhitungan Hidrograf Satuan Sintetis dengan Cara ITB dan Beberapa Contoh Penerapannya. <em>JurnalTeknik Sipil</em>, <em>18</em>(3), 251. https://doi.org/10.5614/jts.2011.18.3.6</p></li>
+</ul>
+</section>
+<section id="ketersediaan-data" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Ketersediaan Data</h1>
 <p>Untuk melakukan kajian bebas banjir ini diperlukan data-data primer maupun sekunder yang dikumpulkan untuk kemudian diolah dan dianalisis sehingga menghasilkan informasi yang memadai sebagai dasar dari laporan hidrologi. Data primer didapatkan dari pengambilan data langsung di lapangan saat tahap pekerjaan lapangan berlangsung, sedangkan data sekunder didapatkan dari sumber lain yang telah ada sebelumnya. Rangkuman data yang digunakan pada penelitian ini baik primer maupun sekunder ditampilkan dalam <a href="#tbl-data" class="quarto-xref">Tabel&nbsp;1</a> berikut:</p>
 <div id="tbl-data" class="quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -188,8 +228,8 @@ Tabel&nbsp;1: Rangkuman Data Yang Digunakan Pada Kajian Ini
 </figure>
 </div>
 </section>
-<section id="catchment-area-ca" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> <em>Catchment Area</em> (CA)</h1>
+<section id="catchment-area-ca" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> <em>Catchment Area</em> (CA)</h1>
 <p>Untuk dapat menghitung debit banjir, diperlukan 2 (dua) inputan data utama. Input yang pertama adalah karakteristik dari catchment area (CA) yang ditinjau seperti luasan, panjang sungai, dan kemiringan sungai. Kemudian input kedua yang diperlukan adalah curah hujan rencana.</p>
 <p>Untuk data karakteristik CA diperoleh dari deliniasi peta rupa bumi Indonesia (RBI). Hasil deliniasi menunjukkan terdapat satu CA di sekitar tapak proyek dengan luasan 32.01 Ha. Gambar CA dapat dilihat pada <a href="#fig-ca" class="quarto-xref">Gambar&nbsp;1</a> dibawah ini.</p>
 <div id="fig-ca" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
@@ -203,10 +243,10 @@ Gambar&nbsp;1: Peta Catchment Area
 </figure>
 </div>
 </section>
-<section id="data-dan-analisa-curah-hujan" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Data dan Analisa Curah Hujan</h1>
-<section id="kondisi-curah-hujan" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="kondisi-curah-hujan"><span class="header-section-number">4.1</span> Kondisi Curah Hujan</h2>
+<section id="data-dan-analisa-curah-hujan" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Data dan Analisa Curah Hujan</h1>
+<section id="kondisi-curah-hujan" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="kondisi-curah-hujan"><span class="header-section-number">5.1</span> Kondisi Curah Hujan</h2>
 <p>Data hujan yang digunakan mempunyai panjang waktu pengamatan selama 20 Tahun dari tahun 2002hingga tahun 2023 yang bersumber pada , berlokasi ±3.4 Km dari lokasi pekerjaan ( <a href="#fig-stahujan" class="quarto-xref">Gambar&nbsp;2</a> ). Berikut ditampilkan lokasi dan data curah hujan maksimum harian serta jumlah curah hujan bulanan rata-rata berupa tabel dan grafik pada stasiun tersebut.</p>
 <div id="fig-stahujan" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -219,39 +259,69 @@ Gambar&nbsp;2: Lokasi Stasiun Hujan Terhadap Lokasi Proyek
 </figure>
 </div>
 </section>
-<section id="analisa-frekuensi" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="analisa-frekuensi"><span class="header-section-number">4.2</span> Analisa Frekuensi</h2>
-<section id="distribusi-normal" class="level3" data-number="4.2.1">
-<h3 data-number="4.2.1" class="anchored" data-anchor-id="distribusi-normal"><span class="header-section-number">4.2.1</span> Distribusi Normal</h3>
+<section id="analisa-frekuensi" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="analisa-frekuensi"><span class="header-section-number">5.2</span> Analisa Frekuensi</h2>
+<p>Analisa curah hujan maksimum rencana di Lokasi pekerjaan dilakukan dengan metoda statistik. Sebararan teoritis yang digunakan dalam analisis frekuensi dari berbagai distribusi, yaitu sebaran teoritis distribusi Normal, Log-Normal 2 parameter, Log-Pearson tipe III, dan Gumbel. Berikut ini diuraikan formula untuk menentukan kedalaman hujan periode ulang tertentu untuk setiap distribusi frekuensi hujan.</p>
+<section id="distribusi-normal" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="distribusi-normal"><span class="header-section-number">5.2.1</span> Distribusi Normal</h3>
+<p>Distribusi normal adalah simetris terhadap sumbu vertikal dan berbentuk lonceng yang juga disebut distribusi Gauss. Distribusi normal mempunyai dua parameter yaitu rata-rata µ dan deviasi standar s dari populasi. Dalam praktek, nilai rata-rata <span class="math inline">\(\hat{x}\)</span> dan deviasi standar <em>s</em> diturunkan dari data sampel untuk menggantikan µ dan s. Persamaan distribusi normal adalah sebagai berikut:</p>
 </section>
-<section id="distribusi-log-normal" class="level3" data-number="4.2.2">
-<h3 data-number="4.2.2" class="anchored" data-anchor-id="distribusi-log-normal"><span class="header-section-number">4.2.2</span> Distribusi Log-Normal</h3>
+<section id="distribusi-log-normal" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="distribusi-log-normal"><span class="header-section-number">5.2.2</span> Distribusi Log-Normal</h3>
+<p>Untuk frekuensi hujan yang mengikuti distribusi Log-normal, kedalaman hujan periode ulang T dapat ditentukan sebagai berikut:</p>
 </section>
-<section id="distribusi-log-pearson-iii" class="level3" data-number="4.2.3">
-<h3 data-number="4.2.3" class="anchored" data-anchor-id="distribusi-log-pearson-iii"><span class="header-section-number">4.2.3</span> Distribusi Log Pearson III</h3>
+<section id="distribusi-log-pearson-iii" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="distribusi-log-pearson-iii"><span class="header-section-number">5.2.3</span> Distribusi Log Pearson III</h3>
+<p>Jika distribusi frekuensi hujan mengikuti distribusi Log-Pearson Tipe III, maka kedalaman hujan periode ulang T dapat ditentukan sebagai berikut:</p>
 </section>
-<section id="distribusi-gumbel" class="level3" data-number="4.2.4">
-<h3 data-number="4.2.4" class="anchored" data-anchor-id="distribusi-gumbel"><span class="header-section-number">4.2.4</span> Distribusi Gumbel</h3>
+<section id="distribusi-gumbel" class="level3" data-number="5.2.4">
+<h3 data-number="5.2.4" class="anchored" data-anchor-id="distribusi-gumbel"><span class="header-section-number">5.2.4</span> Distribusi Gumbel</h3>
+<p>Jika distribusi frekuensi hujan mengikuti distribusi Gumbel, maka kedalaman hujan periode ulang T dapat ditentukan sebagai berikut:</p>
 </section>
-<section id="ringkasan-analisa-desain-curah-hujan" class="level3" data-number="4.2.5">
-<h3 data-number="4.2.5" class="anchored" data-anchor-id="ringkasan-analisa-desain-curah-hujan"><span class="header-section-number">4.2.5</span> Ringkasan Analisa Desain Curah Hujan</h3>
+<section id="ringkasan-analisa-desain-curah-hujan" class="level3" data-number="5.2.5">
+<h3 data-number="5.2.5" class="anchored" data-anchor-id="ringkasan-analisa-desain-curah-hujan"><span class="header-section-number">5.2.5</span> Ringkasan Analisa Desain Curah Hujan</h3>
+<p>Rekapitulasi Hasil perhitungan distribusi curah hujan rencana untuk perioda ulang 2, 5, 10, 25, 50, 100, 200 dan 1000&nbsp; tahun dengan berbagai metode dapat dilihat pada Tabel dan Gambar Berikut.</p>
 </section>
-<section id="penentuan-distribusi-hujan" class="level3" data-number="4.2.6">
-<h3 data-number="4.2.6" class="anchored" data-anchor-id="penentuan-distribusi-hujan"><span class="header-section-number">4.2.6</span> Penentuan Distribusi Hujan</h3>
-</section>
-</section>
-<section id="koefisien-pengaliran" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="koefisien-pengaliran"><span class="header-section-number">4.3</span> Koefisien Pengaliran</h2>
-</section>
-<section id="hujan-efektif" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="hujan-efektif"><span class="header-section-number">4.4</span> Hujan Efektif</h2>
+<section id="penentuan-distribusi-hujan" class="level3" data-number="5.2.6">
+<h3 data-number="5.2.6" class="anchored" data-anchor-id="penentuan-distribusi-hujan"><span class="header-section-number">5.2.6</span> Penentuan Distribusi Hujan</h3>
+<p>Selanjutnya setelah dilakukan analisa frekuensi dilakukan uji kesesuaian distribusi yang dimaksudkan untuk mengetahui kebenaran analisa curah hujan baik terhadap simpangan data vertikal ataupun simpangan data horisontal.</p>
+<p>Uji kesesuaian distribusi frekuensi digunakan untuk menguji apakah pemilihan distribusi yang digunakan dalam perhitungan curah hujan rencana diterima atau ditolak, maka perlu dilakukan uji kesesuaian distribusi baik secara statistik maupun simpangan terkecil. Untuk uji simpangan digunakan metode Chi Square dan metode Smirnov Kolmogorof.</p>
 </section>
 </section>
-<section id="analisa-debit-banjir" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Analisa Debit Banjir</h1>
+<section id="koefisien-pengaliran" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="koefisien-pengaliran"><span class="header-section-number">5.3</span> Koefisien Pengaliran</h2>
+<p>Hasil dari curah hujan rencana masih merupakan hujan total, sedangkan untuk menghitung debit banjir diperlukan nilai hujan efektif, artinya sudah dikurangi dengan infiltrasi lahan yang ada. Berbagai macam cara untuk menghitung hujan efektif, pada pekerjaan ini metode yang digunakan adalah metode Koefisien C atau koefisien limpasan. Karena pada lokasi yang ditinjau sebagian besar merpakan area tegalan/ladang, maka diasumsikan masuk dalam kategori daerah lahan tidak terpelihara (lihat <u><strong>==Tabel 19==</strong></u>). Dengan demikian nilai C yang diambil adalah <u><strong>==0.3==</strong></u>.</p>
 </section>
-<section id="analisa-hidrolika" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Analisa Hidrolika</h1>
+<section id="hujan-efektif" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="hujan-efektif"><span class="header-section-number">5.4</span> Hujan Efektif</h2>
+</section>
+</section>
+<section id="analisa-debit-banjir" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Analisa Debit Banjir</h1>
+<section id="bagan-alir-perhitungan-debit-banjir" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="bagan-alir-perhitungan-debit-banjir"><span class="header-section-number">6.1</span> Bagan Alir Perhitungan Debit Banjir</h2>
+<p>Berdasarkan SNI 2415-2016 tentang "Tata Cara Perhitungan Debit Banjir Rencana", bagan alir perhitungan banjir dapat dilihat pada <a href="#fig-bagan_alir" class="quarto-xref">Gambar&nbsp;3</a> yang memperlihatkan prosedur umum yang diperlukan untuk menghitung debit banjir berdasarkan ketersediaan data di lapangan.</p>
+<div id="fig-bagan_alir" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bagan_alir-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/bagan_alir_banjir.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bagan_alir-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Gambar&nbsp;3: Bagan Alir Perhitungan Debit Rencana (Diolah dari SNI 2415:2016 Hal 6)
+</figcaption>
+</figure>
+</div>
+<p>Karena ketersediaan data dengan rentang panjang yang berada di lokasi hanyalah data hujan maksimum harian selama 20 Tahun serta luasan CA yang kurang dari 50 Km<sup>2</sup>, maka prosedur yang dilakukan berdasarkan bagan alir diatas adalah: pengumpulan data hujan harian maksimum tiap tahun pencatatan, analisa frekuensi, intensitas hujan, analisa rasional, dan terakhir memperoleh debit banjir rencana.</p>
+</section>
+<section id="debit-banjir-di-lokasi-proyek" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="debit-banjir-di-lokasi-proyek"><span class="header-section-number">6.2</span> Debit Banjir di Lokasi Proyek</h2>
+</section>
+<section id="debit-banjir-di-sungai-tengar" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="debit-banjir-di-sungai-tengar"><span class="header-section-number">6.3</span> Debit Banjir di Sungai Tengar</h2>
+</section>
+</section>
+<section id="analisa-hidrolika" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Analisa Hidrolika</h1>
 </section>
 <section id="daftar-pustaka" class="level1 unnumbered">
 

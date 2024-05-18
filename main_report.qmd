@@ -39,6 +39,20 @@ Untuk melakukan kajian bebas banjir ini terdiri dari dua tahapan analisa. Yang p
 a <- 2
 ```
 
+# Kriteria Desain dan Aturan Terkait
+
+Sebagai panduan (*guidelines*) dalam melakukan kajian banjir ini didasarkan pada beberapa aturan dan jurnal terkait sebagai berikut:
+
+-   Undang-undang No. 17 Tahun 2019 Tentang Sumber Daya Air
+
+-   SNI 2415:2016 Tentang Tata Cara Perhitungan Debit Banjir Rencana
+
+-   SNI 7746:2012 Tentang Tata Cara Perhitungan Hujan Maksimum Boleh Jadi Dengan Metode Hersfield
+
+-   SNI 1724:2015 Tentang Analisis Hidrologi, Hidraulik, dan Kriteria Desain Bangunan Sungai
+
+-   Natakusumah, D. K., Hatmoko, W., & Harlan, D. (2011). Prosedur Umum Perhitungan Hidrograf Satuan Sintetis dengan Cara ITB dan Beberapa Contoh Penerapannya. *JurnalTeknik Sipil*, *18*(3), 251. https://doi.org/10.5614/jts.2011.18.3.6
+
 # Ketersediaan Data
 
 Untuk melakukan kajian bebas banjir ini diperlukan data-data primer maupun sekunder yang dikumpulkan untuk kemudian diolah dan dianalisis sehingga menghasilkan informasi yang memadai sebagai dasar dari laporan hidrologi. Data primer didapatkan dari pengambilan data langsung di lapangan saat tahap pekerjaan lapangan berlangsung, sedangkan data sekunder didapatkan dari sumber lain yang telah ada sebelumnya. Rangkuman data yang digunakan pada penelitian ini baik primer maupun sekunder ditampilkan dalam @tbl-data berikut:
@@ -71,23 +85,54 @@ Data hujan yang digunakan mempunyai panjang waktu pengamatan selama `r params$pa
 
 ## Analisa Frekuensi
 
+Analisa curah hujan maksimum rencana di Lokasi pekerjaan dilakukan dengan metoda statistik. Sebararan teoritis yang digunakan dalam analisis frekuensi dari berbagai distribusi, yaitu sebaran teoritis distribusi Normal, Log-Normal 2 parameter, Log-Pearson tipe III, dan Gumbel. Berikut ini diuraikan formula untuk menentukan kedalaman hujan periode ulang tertentu untuk setiap distribusi frekuensi hujan.
+
 ### Distribusi Normal
+
+Distribusi normal adalah simetris terhadap sumbu vertikal dan berbentuk lonceng yang juga disebut distribusi Gauss. Distribusi normal mempunyai dua parameter yaitu rata-rata µ dan deviasi standar s dari populasi. Dalam praktek, nilai rata-rata $\hat{x}$ dan deviasi standar *s* diturunkan dari data sampel untuk menggantikan µ dan s. Persamaan distribusi
+normal adalah sebagai berikut:
 
 ### Distribusi Log-Normal
 
+Untuk frekuensi hujan yang mengikuti distribusi Log-normal, kedalaman hujan periode ulang T dapat ditentukan sebagai berikut:
+
 ### Distribusi Log Pearson III
+
+Jika distribusi frekuensi hujan mengikuti distribusi Log-Pearson Tipe III, maka kedalaman hujan periode ulang T dapat ditentukan sebagai berikut:
 
 ### Distribusi Gumbel
 
+Jika distribusi frekuensi hujan mengikuti distribusi Gumbel, maka kedalaman hujan periode ulang T dapat ditentukan sebagai berikut:
+
 ### Ringkasan Analisa Desain Curah Hujan
+
+Rekapitulasi Hasil perhitungan distribusi curah hujan rencana untuk perioda ulang 2, 5, 10, 25, 50, 100, 200 dan 1000  tahun dengan berbagai metode dapat dilihat pada Tabel dan Gambar Berikut.
 
 ### Penentuan Distribusi Hujan
 
+Selanjutnya setelah dilakukan analisa frekuensi dilakukan uji kesesuaian distribusi yang dimaksudkan untuk mengetahui kebenaran analisa curah hujan baik terhadap simpangan data vertikal ataupun simpangan data horisontal.
+
+Uji kesesuaian distribusi frekuensi digunakan untuk menguji apakah pemilihan distribusi yang digunakan dalam perhitungan curah hujan rencana diterima atau ditolak, maka perlu dilakukan uji kesesuaian distribusi baik secara statistik maupun simpangan terkecil. Untuk uji simpangan digunakan metode Chi Square dan metode Smirnov Kolmogorof.
+
 ## Koefisien Pengaliran
+
+Hasil dari curah hujan rencana masih merupakan hujan total, sedangkan untuk menghitung debit banjir diperlukan nilai hujan efektif, artinya sudah dikurangi dengan infiltrasi lahan yang ada. Berbagai macam cara untuk menghitung hujan efektif, pada pekerjaan ini metode yang digunakan adalah metode Koefisien C atau koefisien limpasan. Karena pada lokasi yang ditinjau sebagian besar merpakan area tegalan/ladang, maka diasumsikan masuk dalam kategori daerah lahan tidak terpelihara (lihat [**==Tabel 19==**]{.underline}). Dengan demikian nilai C yang diambil adalah [**==0.3==**]{.underline}.
 
 ## Hujan Efektif
 
 # Analisa Debit Banjir
+
+## Bagan Alir Perhitungan Debit Banjir
+
+Berdasarkan SNI 2415-2016 tentang \"Tata Cara Perhitungan Debit Banjir Rencana\", bagan alir perhitungan banjir dapat dilihat pada @fig-bagan_alir yang memperlihatkan prosedur umum yang diperlukan untuk menghitung debit banjir berdasarkan ketersediaan data di lapangan.
+
+![Bagan Alir Perhitungan Debit Rencana (Diolah dari SNI 2415:2016 Hal 6)](figures/bagan_alir_banjir.png){#fig-bagan_alir fig-align="center"}
+
+Karena ketersediaan data dengan rentang panjang yang berada di lokasi hanyalah data hujan maksimum harian selama `r params$panjang_hujan` serta luasan CA yang kurang dari 50 Km^2^, maka prosedur yang dilakukan berdasarkan bagan alir diatas adalah: pengumpulan data hujan harian maksimum tiap tahun pencatatan, analisa frekuensi, intensitas hujan, analisa rasional, dan terakhir memperoleh debit banjir rencana.
+
+## Debit Banjir di Lokasi Proyek
+
+## Debit Banjir di `r params$sungai`
 
 # Analisa Hidrolika
 
