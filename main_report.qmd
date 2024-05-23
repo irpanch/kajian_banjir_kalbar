@@ -89,14 +89,55 @@ Analisa curah hujan maksimum rencana di Lokasi pekerjaan dilakukan dengan metoda
 
 ### Distribusi Normal
 
-Distribusi normal adalah simetris terhadap sumbu vertikal dan berbentuk lonceng yang juga disebut distribusi Gauss. Distribusi normal mempunyai dua parameter yaitu rata-rata µ dan deviasi standar s dari populasi. Dalam praktek, nilai rata-rata $\hat{x}$ dan deviasi standar *s* diturunkan dari data sampel untuk menggantikan µ dan s. Persamaan distribusi
-normal adalah sebagai berikut:
+Distribusi normal adalah simetris terhadap sumbu vertikal dan berbentuk lonceng yang juga disebut distribusi Gauss. Distribusi normal mempunyai dua parameter yaitu rata-rata µ dan deviasi standar s dari populasi. Dalam praktek, nilai rata-rata $\hat{x}$ dan deviasi standar *s* diturunkan dari data sampel untuk menggantikan µ dan s. Persamaan distribusi normal adalah sebagai berikut:
+
+$$
+\displaylines{
+\mathrm{X}_{T}^{}=\overline{X}+S.K \\
+\overline{X}=\frac{1}{n}\sum_{i=1}^{n}.X{i} \\
+S=\sqrt{\frac{\sum_{i=1}^{n}(X{i}-\overline{X})^{2}}{n-1}} \\
+}
+$$
+
+dimana :
+
+X~T~ = Kedalaman hujan untuk periode ulang T tahun (mm).
+
+T =Periode ulang (tahun).
+
+$\overline{X}$ = Kedalaman hujan rata-rata (mm).
+
+n = Jumlah data.
+
+S = Standar deviasi (mm).
+
+K = Faktor dari Tabel Z distribusi normal
 
 ### Distribusi Log-Normal
 
 Untuk frekuensi hujan yang mengikuti distribusi Log-normal, kedalaman hujan periode ulang T dapat ditentukan sebagai berikut:
 
-### Distribusi Log Pearson III
+$$
+\displaylines{
+L_{n}X_{t}=\overline{L_{n}X}+S_{LnXi}K_{T} \\\overline{L_{n}X}=\frac{1}n{L_{n}X_{i}} \\S_{LnXi}=\sqrt{\frac{\sum_{i=n}^{n}(L_{n}X_{i})^2}{n-1}}
+}
+$$
+
+dimana :
+
+LnX~T~ = Kedalaman hujan untuk periode ulang T tahun (mm).
+
+T =Periode ulang (tahun).
+
+$\overline{LnX}$ = Kedalaman hujan rata-rata (mm).
+
+n = Jumlah data.
+
+$S_{LnXi}$ = Standar deviasi dari Log Xi (mm).
+
+KT = Faktor dari Tabel Z distribusi normal
+
+Distribusi Log Pearson III
 
 Jika distribusi frekuensi hujan mengikuti distribusi Log-Pearson Tipe III, maka kedalaman hujan periode ulang T dapat ditentukan sebagai berikut:
 
@@ -124,7 +165,7 @@ Hasil dari curah hujan rencana masih merupakan hujan total, sedangkan untuk meng
 
 ## Bagan Alir Perhitungan Debit Banjir
 
-Berdasarkan SNI 2415-2016 tentang \"Tata Cara Perhitungan Debit Banjir Rencana\", bagan alir perhitungan banjir dapat dilihat pada @fig-bagan_alir yang memperlihatkan prosedur umum yang diperlukan untuk menghitung debit banjir berdasarkan ketersediaan data di lapangan.
+Berdasarkan SNI 2415-2016 tentang "Tata Cara Perhitungan Debit Banjir Rencana", bagan alir perhitungan banjir dapat dilihat pada @fig-bagan_alir yang memperlihatkan prosedur umum yang diperlukan untuk menghitung debit banjir berdasarkan ketersediaan data di lapangan.
 
 ![Bagan Alir Perhitungan Debit Rencana (Diolah dari SNI 2415:2016 Hal 6)](figures/bagan_alir_banjir.png){#fig-bagan_alir fig-align="center"}
 
