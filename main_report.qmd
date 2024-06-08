@@ -3,6 +3,9 @@ title: "Kajian Banjir 100 Tahunan Landfill B3 `r params$pt`"
 format: 
   html:
     css: style.css
+    toc: true
+    toc-location: left
+    toc-title: "Daftar Isi"
 number-sections: true
 editor: visual
 params: 
@@ -137,13 +140,64 @@ $S_{LnXi}$ = Standar deviasi dari Log Xi (mm).
 
 KT = Faktor dari Tabel Z distribusi normal
 
-Distribusi Log Pearson III
+### Distribusi Log Pearson III
 
 Jika distribusi frekuensi hujan mengikuti distribusi Log-Pearson Tipe III, maka kedalaman hujan periode ulang T dapat ditentukan sebagai berikut:
+
+$$
+\displaylines{
+L_{n}X_{t}=\overline{L_{n}X}+S_{LnXi}G \\\overline{L_{n}X}=\frac{1}n{L_{n}X_{i}} \\S_{LnXi}=\sqrt{\frac{\sum_{i=n}^{n}(L_{n}X_{i})^2}{n-1}}
+\\G=f(C_{s},T)
+\\C_{s}=\frac{n\sum_{i=n}^{n}(L_{n}X_{i}-\overline{L_{n}X})^3}{(n-1)(n-2)S_{LnXi^3}}
+}
+$$
+dimana :
+
+LnX~T~ = log Kedalaman hujan untuk periode ulang T tahun (mm).
+
+T =Periode ulang (tahun).
+
+$\overline{LnX}$ = Kedalaman hujan rata-rata (mm).
+
+n = Jumlah data.
+
+$S_{LnXi}$ = Standar deviasi dari Log Xi (mm).
+
+G = Faktor frekuensi
+
+$C_{s}$ = koefisien kemencengan data Log X~i~
 
 ### Distribusi Gumbel
 
 Jika distribusi frekuensi hujan mengikuti distribusi Gumbel, maka kedalaman hujan periode ulang T dapat ditentukan sebagai berikut:
+
+$$ \displaylines{ 
+\mathrm{X}_{T}^{}=\overline{X}+S.K 
+\\ \overline{X}=\frac{1}{n}\sum_{i=1}^{n}.X{i} 
+\\ S=\sqrt{\frac{\sum_{i=1}^{n}(X{i}-\overline{X})^{2}}{n-1}} 
+\\ K=\frac{Y_{T}-Y_{n}}{S_{n}}
+\\ Y_{T}=-l_{n}(-ln\frac{T-1}{T})
+} $$
+
+dimana :
+
+X~T~ = Kedalaman hujan untuk periode ulang T tahun (mm).
+
+T =Periode ulang (tahun).
+
+$\overline{X}$ = Kedalaman hujan rata-rata (mm).
+
+n = Jumlah data.
+
+S = Standar deviasi (mm).
+
+K = Faktor frekuensi
+
+YT = Reduced variate
+
+Yn = Reduced mean (sebagai fungsi dari banyaknya data n)
+
+Sn = Reduced standard deviation (sebagai fungsi dari banyaknya data n)
 
 ### Ringkasan Analisa Desain Curah Hujan
 
