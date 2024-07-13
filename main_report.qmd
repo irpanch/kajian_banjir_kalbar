@@ -1,5 +1,6 @@
 ---
 title: "Kajian Banjir 100 Tahunan Landfill B3 `r params$pt`"
+subtitle: "Kecamatan `r params$kecamatan`, Kabupaten `r params$kabupaten`, Provinsi `r params$provinsi`. "
 format: 
   html:
     css: style.css
@@ -60,13 +61,14 @@ Sebagai panduan (*guidelines*) dalam melakukan kajian banjir ini didasarkan pada
 
 Untuk melakukan kajian bebas banjir ini diperlukan data-data primer maupun sekunder yang dikumpulkan untuk kemudian diolah dan dianalisis sehingga menghasilkan informasi yang memadai sebagai dasar dari laporan hidrologi. Data primer didapatkan dari pengambilan data langsung di lapangan saat tahap pekerjaan lapangan berlangsung, sedangkan data sekunder didapatkan dari sumber lain yang telah ada sebelumnya. Rangkuman data yang digunakan pada penelitian ini baik primer maupun sekunder ditampilkan dalam @tbl-data berikut:
 
-| No  | Data                            | Jenis Data    | Sumber Data          |
-|:---:|---------------------------------|---------------|----------------------|
-|  1  | Data topografi                  | Data Primer   | Pengukuran Topografi |
-|  2  | Data Batas Landfill             | Data Primer   | `r params$pt`        |
-|  3  | Digital Elevation Model (DEM)   | Data Sekunder | DEMNAS               |
-|  4  | Data Hujan `r params$sta_hujan` | Data Sekunder | BMKG                 |
-|  5  | Data Tutupan Lahan              | Data Sekunder | KLHK                 |
+| No  | Data                                                 | Jenis Data    | Sumber Data          |
+|:--------------:|-------------------------|----------------|----------------|
+|  1  | Data topografi                                       | Data Primer   | Pengukuran Topografi |
+|  2  | Data Batas Landfill                                  | Data Primer   | `r params$pt`        |
+|  3  | Digital Elevation Model (DEM)                        | Data Sekunder | DEMNAS               |
+|  4  | Data Hujan `r params$sta_hujan`                      | Data Sekunder | BMKG                 |
+|  5  | Data Tutupan Lahan                                   | Data Sekunder | KLHK                 |
+|  6  | Data pengamatan pasang surut harian di Sungai Tengar | Data Primer   | `r params$pt`        |
 
 : Rangkuman Data Yang Digunakan Pada Kajian Ini {#tbl-data}
 
@@ -82,9 +84,30 @@ Untuk data karakteristik CA diperoleh dari deliniasi peta rupa bumi Indonesia (R
 
 ## Kondisi Curah Hujan
 
-Data hujan yang digunakan mempunyai panjang waktu pengamatan selama `r params$panjang_hujan` dari tahun `r params$awal_hjn`hingga tahun `r params$akhir_hjn` yang bersumber pada `r params$sta_hjn`, berlokasi ±`r params$jarak_ke_sta` dari lokasi pekerjaan ( @fig-stahujan ). Berikut ditampilkan lokasi dan data curah hujan maksimum harian serta jumlah curah hujan bulanan rata-rata berupa tabel dan grafik pada stasiun tersebut.
+Data hujan yang digunakan mempunyai panjang waktu pengamatan selama `r params$panjang_hujan` dari tahun `r params$awal_hjn` hingga tahun `r params$akhir_hjn` yang bersumber pada BMKG. Berikut ditampilkan lokasi dan data curah hujan maksimum harian serta jumlah curah hujan bulanan rata-rata berupa tabel dan grafik pada stasiun tersebut.
 
-![Lokasi Stasiun Hujan Terhadap Lokasi Proyek](figures/ca_sta_hujan.png){#fig-stahujan}
+```{r}
+#| label: tbl-data_hujan
+#| tbl-cap: "Data Hujan Maksimum."
+#| warning: false
+#| echo: false
+
+library(tidyverse)
+library(lubridate)
+library(fasstr)
+library(scales)
+library(readr)
+library(kableExtra)
+
+data_hjn <- read_csv("raw_data/data_hjn.csv", 
+    col_types = cols(date = col_date(format = "%d/%m/%Y"), 
+        rainfall = col_number()))
+
+kbl(head(data_hjn))
+
+
+
+```
 
 ## Analisa Frekuensi
 
@@ -150,8 +173,7 @@ L_{n}X_{t}=\overline{L_{n}X}+S_{LnXi}G \\\overline{L_{n}X}=\frac{1}n{L_{n}X_{i}}
 \\G=f(C_{s},T)
 \\C_{s}=\frac{n\sum_{i=n}^{n}(L_{n}X_{i}-\overline{L_{n}X})^3}{(n-1)(n-2)S_{LnXi^3}}
 }
-$$
-dimana :
+$$ dimana :
 
 LnX~T~ = log Kedalaman hujan untuk periode ulang T tahun (mm).
 
