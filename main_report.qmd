@@ -61,14 +61,14 @@ Sebagai panduan (*guidelines*) dalam melakukan kajian banjir ini didasarkan pada
 
 Untuk melakukan kajian bebas banjir ini diperlukan data-data primer maupun sekunder yang dikumpulkan untuk kemudian diolah dan dianalisis sehingga menghasilkan informasi yang memadai sebagai dasar dari laporan hidrologi. Data primer didapatkan dari pengambilan data langsung di lapangan saat tahap pekerjaan lapangan berlangsung, sedangkan data sekunder didapatkan dari sumber lain yang telah ada sebelumnya. Rangkuman data yang digunakan pada penelitian ini baik primer maupun sekunder ditampilkan dalam @tbl-data berikut:
 
-| No  | Data                                                 | Jenis Data    | Sumber Data          |
-|:--------------:|-------------------------|----------------|----------------|
-|  1  | Data topografi                                       | Data Primer   | Pengukuran Topografi |
-|  2  | Data Batas Landfill                                  | Data Primer   | `r params$pt`        |
-|  3  | Digital Elevation Model (DEM)                        | Data Sekunder | DEMNAS               |
-|  4  | Data Hujan `r params$sta_hujan`                      | Data Sekunder | BMKG                 |
-|  5  | Data Tutupan Lahan                                   | Data Sekunder | KLHK                 |
-|  6  | Data pengamatan pasang surut harian di Sungai Tengar | Data Primer   | `r params$pt`        |
+| No  | Data                                                     | Jenis Data    | Sumber Data          |
+|:-------------:|-----------------------------|---------------|---------------|
+|  1  | Data topografi                                           | Data Primer   | Pengukuran Topografi |
+|  2  | Data Batas Landfill                                      | Data Primer   | `r params$pt`        |
+|  3  | Digital Elevation Model (DEM)                            | Data Sekunder | DEMNAS               |
+|  4  | Data Hujan `r params$sta_hujan`                          | Data Sekunder | BMKG                 |
+|  5  | Data Tutupan Lahan                                       | Data Sekunder | KLHK                 |
+|  6  | Data pengamatan pasang surut harian di `r params$sungai` | Data Primer   | `r params$pt`        |
 
 : Rangkuman Data Yang Digunakan Pada Kajian Ini {#tbl-data}
 
@@ -98,14 +98,23 @@ library(fasstr)
 library(scales)
 library(readr)
 library(kableExtra)
+library(gt)
+library(gtExtras)
+library(summarytools)
 
-data_hjn <- read_csv("raw_data/data_hjn.csv", 
+
+data_Hjn <- read_csv("raw_data/data_hjn.csv", 
     col_types = cols(date = col_date(format = "%d/%m/%Y"), 
         rainfall = col_number()))
 
-kbl(head(data_hjn))
+rename <- c("Tanggal observasi","curah hujan (mm)")
+colnames(data_Hjn) <- rename
 
+kbl(summary(data_Hjn))
 
+gt_plt_summary(data_Hjn)
+
+summarytools::dfSummary(data_Hjn) |> stview()
 
 ```
 
