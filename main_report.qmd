@@ -62,7 +62,7 @@ Sebagai panduan (*guidelines*) dalam melakukan kajian banjir ini didasarkan pada
 Untuk melakukan kajian bebas banjir ini diperlukan data-data primer maupun sekunder yang dikumpulkan untuk kemudian diolah dan dianalisis sehingga menghasilkan informasi yang memadai sebagai dasar dari laporan hidrologi. Data primer didapatkan dari pengambilan data langsung di lapangan saat tahap pekerjaan lapangan berlangsung, sedangkan data sekunder didapatkan dari sumber lain yang telah ada sebelumnya. Rangkuman data yang digunakan pada penelitian ini baik primer maupun sekunder ditampilkan dalam @tbl-data berikut:
 
 | No  | Data                                                     | Jenis Data    | Sumber Data          |
-|:-------------:|-----------------------------|---------------|---------------|
+|:---------------:|--------------------|-----------------|-----------------|
 |  1  | Data topografi                                           | Data Primer   | Pengukuran Topografi |
 |  2  | Data Batas Landfill                                      | Data Primer   | `r params$pt`        |
 |  3  | Digital Elevation Model (DEM)                            | Data Sekunder | DEMNAS               |
@@ -87,34 +87,49 @@ Untuk data karakteristik CA diperoleh dari deliniasi peta rupa bumi Indonesia (R
 Data hujan yang digunakan mempunyai panjang waktu pengamatan selama `r params$panjang_hujan` dari tahun `r params$awal_hjn` hingga tahun `r params$akhir_hjn` yang bersumber pada BMKG. Berikut ditampilkan lokasi dan data curah hujan maksimum harian serta jumlah curah hujan bulanan rata-rata berupa tabel dan grafik pada stasiun tersebut.
 
 ```{r}
-#| label: tbl-data_hujan
-#| tbl-cap: "Data Hujan Maksimum."
+#| label: load_library_and_data
 #| warning: false
+#| eval: true
 #| echo: false
 
-library(tidyverse)
+library(ggbreak)
+library(ggplot2)
+library(dplyr)
 library(lubridate)
-library(fasstr)
-library(scales)
-library(readr)
-library(kableExtra)
-library(gt)
-library(gtExtras)
-library(summarytools)
+library(hydroTSM)
+
+dbt <- "Debit"
+hjn <- "Hujan"
+dbt_title <- expression("Debit Harian"~(m^3/dtk))
+dbt_labs <- expression("Debit"~(m^3/dtk))
+hjn_title <- "Nilai Curah Hujan (mm)"
+hjn_labs <- "Curah Hujan (mm)"
+
+jenis_data <- hjn        # rubah sesuai jenis data yang ada, hujan atau debit?
+judul_data <- hjn_title  # rubah sesuai jenis data yang ada, hujan atau debit?
+judul_label <- hjn_labs  # rubah sesuai jenis data yang ada, hujan atau debit?
+
+```
+
+```{r}
+#| label: fig-Data_hujan_harian
+#| fig-cap: "Data Hujan Harian"
+#| warning: false
+#| eval: true
+#| echo: false
 
 
-data_Hjn <- read_csv("raw_data/data_hjn.csv", 
-    col_types = cols(date = col_date(format = "%d/%m/%Y"), 
-        rainfall = col_number()))
+data <- read.csv("code/rekap_hujan_harian.csv")
+data$Date <- as.Date(data[,1],format="%d-%b-%y")
+data[,2] <- as.numeric(as.character(data[,2]))
+data_date <- as.POSIXct(data$Date)
 
-rename <- c("Tanggal observasi","curah hujan (mm)")
-colnames(data_Hjn) <- rename
-
-kbl(summary(data_Hjn))
-
-gt_plt_summary(data_Hjn)
-
-summarytools::dfSummary(data_Hjn) |> stview()
+ggplot(data,aes(x=Date, y=rahadi_oesman))+geom_line(col="blue3") + 
+  labs(title=judul_data,subtitle = "Sta_Rahadi Oesman",x = "Waktu",y=judul_label) +
+  theme_update(plot.title=element_text(hjust=0.5))+
+  theme_update(plot.subtitle=element_text(hjust=0.5))+
+  theme_update(axis.title.y=element_text(angle=90))+
+  scale_x_date(breaks = seq(min(data$Date),max(data$Date),length=6 ),date_labels = "%b-%y")
 
 ```
 

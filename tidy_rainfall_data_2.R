@@ -33,11 +33,16 @@ str(data) # cek struktur data
 # rubah format kolom satu menjadi tanggal (semula karakter)
 data$Date <- as.Date(data[,1],format="%d-%b-%y")
 
+
 # cek nama kolom
 names(data)
 
 # rubah data sta. yang masih karakter  menjadi numerik
 data[,2] <- as.numeric(as.character(data[,2]))
+data_date <- as.POSIXct(data$Date)
+
+write.csv(data,"output/data_clean.csv")
+
 
 summary(data)
 g <- ggplot(data,aes(x=Date, y=rahadi_oesman))+geom_line(col="blue3") + 
@@ -46,7 +51,7 @@ g <- ggplot(data,aes(x=Date, y=rahadi_oesman))+geom_line(col="blue3") +
   theme_update(plot.subtitle=element_text(hjust=0.5))+
   theme_update(axis.title.y=element_text(angle=90))
 
-data_date <- as.POSIXct(data$Date)
+
 
 g2 <- g + scale_x_date(
   breaks = seq(min(data$Date),max(data$Date),length=6),date_labels = "%b-%y")
