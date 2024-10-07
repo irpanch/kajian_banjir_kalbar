@@ -62,7 +62,7 @@ Sebagai panduan (*guidelines*) dalam melakukan kajian banjir ini didasarkan pada
 Untuk melakukan kajian bebas banjir ini diperlukan data-data primer maupun sekunder yang dikumpulkan untuk kemudian diolah dan dianalisis sehingga menghasilkan informasi yang memadai sebagai dasar dari laporan hidrologi. Data primer didapatkan dari pengambilan data langsung di lapangan saat tahap pekerjaan lapangan berlangsung, sedangkan data sekunder didapatkan dari sumber lain yang telah ada sebelumnya. Rangkuman data yang digunakan pada penelitian ini baik primer maupun sekunder ditampilkan dalam @tbl-data berikut:
 
 | No  | Data                                                     | Jenis Data    | Sumber Data          |
-|:---------------:|--------------------|-----------------|-----------------|
+|:----------------:|--------------------|------------------|------------------|
 |  1  | Data topografi                                           | Data Primer   | Pengukuran Topografi |
 |  2  | Data Batas Landfill                                      | Data Primer   | `r params$pt`        |
 |  3  | Digital Elevation Model (DEM)                            | Data Sekunder | DEMNAS               |
@@ -124,12 +124,25 @@ data$Date <- as.Date(data[,1],format="%d-%b-%y")
 data[,2] <- as.numeric(as.character(data[,2]))
 data_date <- as.POSIXct(data$Date)
 
-ggplot(data,aes(x=Date, y=rahadi_oesman))+geom_line(col="blue3") + 
-  labs(title=judul_data,subtitle = "Sta_Rahadi Oesman",x = "Waktu",y=judul_label) +
+ggplot(data,aes(x=Date, y=data[,2]))+geom_line(col="blue3") + 
+  labs(title=judul_data,subtitle = params$sta_hujan,x = "Waktu",y=judul_label) +
   theme_update(plot.title=element_text(hjust=0.5))+
   theme_update(plot.subtitle=element_text(hjust=0.5))+
   theme_update(axis.title.y=element_text(angle=90))+
   scale_x_date(breaks = seq(min(data$Date),max(data$Date),length=6 ),date_labels = "%b-%y")
+
+```
+
+```{r}
+#| label: fig-summary_data_hujan
+#| fig-cap: "Resume Data Hujan"
+#| warning: false
+#| eval: true
+#| echo: false
+
+zoo_rr_data <- zoo(data[,2],data$Date) 
+hydroplot(zoo_rr_data,var.type = "Precipitation",var.unit = "mm", xlab = "waktu", ylab = "curah hujan (mm)")
+
 
 ```
 
