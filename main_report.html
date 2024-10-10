@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -189,9 +155,6 @@ window.Quarto = {
 <p>Banjir merupakan peristiwa meluapnya air sungai melebihi palung sungai atau genangan air yang terjadi pada daerah yang rendah dan tidak bisa terdrainasikan <span class="citation" data-cites="sni2415:2016">(<a href="#ref-sni2415:2016" role="doc-biblioref">SNI 2415:2016 2016</a>)</span>. Kajian mengenai banjir merupakan salah satu bagian yang penting dalam melakukan berbagai analisis, baik analisa untuk infrastruktur, saluran drainase, atau jembatan.</p>
 <p>Dalam kajian banjir, besarnya (magnitude) debit didefinisikan sebagai kala ulang atau periode ulang. Dimana kala ulang merupakan waktu hipotetik dimana probabilitas kejadian debit atau hujan dengan besaran tertentu akan disamai atau dilampaui sekali dalam jangka waktu tersebut <span class="citation" data-cites="permenpuprnomor12/prt/m/2014">(<a href="#ref-permenpuprnomor12/prt/m/2014" role="doc-biblioref">Permen PUPR Nomor 12/PRT/M/2014 2014</a>)</span>.</p>
 <p>Untuk melakukan kajian bebas banjir ini terdiri dari dua tahapan analisa. Yang pertama adalah analisa hidrologi dimana output dari analisa ini adalah nilai debit banjir pada berbagai kala ulang. Tahapan yang kedua adalah analisa hidrolika dimana nilai debit banjir yang telah dihitung tadi dimodelkan/disimulasikan hingga memperoleh tinggi muka air banjir serta karakteristik hidrolik lainnya seperti kecepatan dan luas genangan.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
 <section id="kriteria-desain-dan-aturan-terkait" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Kriteria Desain dan Aturan Terkait</h1>
@@ -216,7 +179,7 @@ Tabel&nbsp;1: Rangkuman Data Yang Digunakan Pada Kajian Ini
 <table class="table">
 <colgroup>
 <col style="width: 24%">
-<col style="width: 27%">
+<col style="width: 26%">
 <col style="width: 24%">
 <col style="width: 24%">
 </colgroup>
@@ -314,6 +277,20 @@ Gambar&nbsp;2: Data Hujan Harian
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-summary_data_hujan-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Gambar&nbsp;3: Resume Data Hujan
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-matrixplot-rainfall" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-matrixplot-rainfall-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="main_report_files/figure-html/fig-matrixplot-rainfall-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-matrixplot-rainfall-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Gambar&nbsp;4: Matrixplot Data Hujan Bulanan
 </figcaption>
 </figure>
 </div>
@@ -418,14 +395,14 @@ L_{n}X_{t}=\overline{L_{n}X}+S_{LnXi}G \\\overline{L_{n}X}=\frac{1}n{L_{n}X_{i}}
 <h1 data-number="6"><span class="header-section-number">6</span> Analisa Debit Banjir</h1>
 <section id="bagan-alir-perhitungan-debit-banjir" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="bagan-alir-perhitungan-debit-banjir"><span class="header-section-number">6.1</span> Bagan Alir Perhitungan Debit Banjir</h2>
-<p>Berdasarkan SNI 2415-2016 tentang “Tata Cara Perhitungan Debit Banjir Rencana”, bagan alir perhitungan banjir dapat dilihat pada <a href="#fig-bagan_alir" class="quarto-xref">Gambar&nbsp;4</a> yang memperlihatkan prosedur umum yang diperlukan untuk menghitung debit banjir berdasarkan ketersediaan data di lapangan.</p>
+<p>Berdasarkan SNI 2415-2016 tentang “Tata Cara Perhitungan Debit Banjir Rencana”, bagan alir perhitungan banjir dapat dilihat pada <a href="#fig-bagan_alir" class="quarto-xref">Gambar&nbsp;5</a> yang memperlihatkan prosedur umum yang diperlukan untuk menghitung debit banjir berdasarkan ketersediaan data di lapangan.</p>
 <div id="fig-bagan_alir" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-bagan_alir-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/bagan_alir_banjir.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bagan_alir-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Gambar&nbsp;4: Bagan Alir Perhitungan Debit Rencana (Diolah dari SNI 2415:2016 Hal 6)
+Gambar&nbsp;5: Bagan Alir Perhitungan Debit Rencana (Diolah dari SNI 2415:2016 Hal 6)
 </figcaption>
 </figure>
 </div>
