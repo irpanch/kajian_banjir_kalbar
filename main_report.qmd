@@ -286,6 +286,44 @@ Sn = Reduced standard deviation (sebagai fungsi dari banyaknya data n)
 
 Rekapitulasi Hasil perhitungan distribusi curah hujan rencana untuk perioda ulang 2, 5, 10, 25, 50, 100, 200 dan 1000  tahun dengan berbagai metode dapat dilihat pada Tabel dan Gambar Berikut.
 
+```{r}
+#| label: fig-rainfall-pdf
+#| fig-cap: "Grafik PDF Curah Hujan Harian"
+#| warning: false
+#| eval: true
+#| echo: false
+
+library(extremeStat)
+data_filter <- subset(data,data[,2] >= 0.1)
+dlf_P <- distLfit(data_filter$rahadi_oesman)
+plotLfit(dlf_P,legend = T,col = "cadetblue1", main = "Grafik PDF Curah Hujan Harian", xlab="Hujan (mm)",nbest = 10)
+```
+
+```{r}
+#| label: fig-rainfall-cdf
+#| fig-cap: "Grafik PDF Curah Hujan Harian"
+#| warning: false
+#| eval: true
+#| echo: false
+
+plotLfit(dlf_P, cdf=TRUE, main = "Grafik CDF Curah Hujan Harian", xlab="Hujan (mm)",nbest = 10)
+
+```
+
+```{r}
+#| label: fig-rainfall-frequency
+#| fig-cap: "Analisa Frekuensi Curah Hujan Rencana"
+#| warning: false
+#| eval: true
+#| echo: false
+
+dlf_P <- distLfit(data_filter$rahadi_oesman)
+dle <- distLextreme(dlf=dlf_P, RPs=c(2,10,100), gpd=F)
+plotLextreme(dle, nbest=6, log=TRUE,ylab="Hujan (mm)",xlab="Periode Kala Ulang (Tahun)",
+             main=c("Analisa Frekuensi Curah Hujan Rencana",params$sta_hujan),legargs = list(cex=0.6,bg="transparent"))
+#dle$returnlev
+```
+
 ### Penentuan Distribusi Hujan
 
 Selanjutnya setelah dilakukan analisa frekuensi dilakukan uji kesesuaian distribusi yang dimaksudkan untuk mengetahui kebenaran analisa curah hujan baik terhadap simpangan data vertikal ataupun simpangan data horisontal.
