@@ -170,6 +170,23 @@ write.csv(mat_rata2,"output/rata2_hujan_bulanan.csv")
 
 ```
 
+```{r}
+#| label: tbl-matrixplot-rainfall
+#| tbl-cap: "Jumlah Hujan Bulanan (mm)"
+#| warning: false
+#| eval: true
+#| echo: false
+
+library(gt)
+jml_bulanan <- read.csv("output/jumlah_hujan_bulanan.csv")
+colnames(jml_bulanan)[1] <- "Tahun"
+start_date <- "2004-01-01"
+end_date <- "2023-31-12"
+gt(jml_bulanan)
+```
+
+Dari @tbl-matrixplot-rainfall diatas dapat dilihat bahwa hujan yang paling banyak adalah `r max(jml_bulanan[2:13])` mm/bulan.
+
 ## Analisa Frekuensi
 
 Analisa curah hujan maksimum rencana di Lokasi pekerjaan dilakukan dengan metoda statistik. Sebararan teoritis yang digunakan dalam analisis frekuensi dari berbagai distribusi, yaitu sebaran teoritis distribusi Normal, Log-Normal 2 parameter, Log-Pearson tipe III, dan Gumbel. Berikut ini diuraikan formula untuk menentukan kedalaman hujan periode ulang tertentu untuk setiap distribusi frekuensi hujan.
