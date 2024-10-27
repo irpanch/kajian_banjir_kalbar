@@ -347,9 +347,13 @@ Selanjutnya setelah dilakukan analisa frekuensi dilakukan uji kesesuaian distrib
 
 Uji kesesuaian distribusi frekuensi digunakan untuk menguji apakah pemilihan distribusi yang digunakan dalam perhitungan curah hujan rencana diterima atau ditolak, maka perlu dilakukan uji kesesuaian distribusi baik secara statistik maupun simpangan terkecil. Untuk uji simpangan digunakan metode Chi Square dan metode Smirnov Kolmogorof.
 
-## Koefisien Pengaliran
+## Koefisien Limpasan
 
-Hasil dari curah hujan rencana masih merupakan hujan total, sedangkan untuk menghitung debit banjir diperlukan nilai hujan efektif, artinya sudah dikurangi dengan infiltrasi lahan yang ada. Berbagai macam cara untuk menghitung hujan efektif, pada pekerjaan ini metode yang digunakan adalah metode Koefisien C atau koefisien limpasan. Karena pada lokasi yang ditinjau sebagian besar merpakan area tegalan/ladang, maka diasumsikan masuk dalam kategori daerah lahan tidak terpelihara (lihat [**==Tabel 19==**]{.underline}). Dengan demikian nilai C yang diambil adalah [**==0.3==**]{.underline}.
+Hasil dari curah hujan rencana masih merupakan hujan total, sedangkan untuk menghitung debit banjir diperlukan nilai hujan efektif, artinya sudah dikurangi dengan infiltrasi lahan yang ada. Berbagai macam cara untuk menghitung hujan efektif, pada pekerjaan ini metode yang digunakan adalah metode Koefisien C atau koefisien limpasan. Karena pada lokasi yang ditinjau sebagian besar merpakan area tegalan/ladang, maka diasumsikan masuk dalam kategori daerah lahan tidak terpelihara (lihat @tbl-koef_limpasan). Dengan demikian nilai C yang diambil adalah **0.3.**
+
+![Nilai Koefisien Limpasan](figures/koefisien_limpasan.png){#tbl-koef_limpasan fig-align="center"}
+
+![Kondisi Tutupan Lahan di Sekitar Tapak Proyek](figures/kondisi_tutupan_lahan.jpg){#fig-tutupan_lahan fig-align="center" width="495"}
 
 ## Hujan Efektif
 
