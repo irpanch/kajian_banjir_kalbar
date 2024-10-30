@@ -153,20 +153,40 @@ hydroplot(zoo_rr_data,var.type = "Precipitation",var.unit = "mm", xlab = "time",
 
 bulanan_zoo_rr_data <- daily2monthly(zoo_rr_data, FUN=sum, na.rm = T)
 bulanan_rata2_zoo <- daily2monthly(zoo_rr_data, FUN=mean, na.rm = T)
+bulanan_max_zoo <- daily2monthly(zoo_rr_data, FUN=max, na.rm = T)
+tahunan_max_zoo <- daily2annual(zoo_rr_data, FUN=max, na.rm = T)
+
 
 mat <- matrix(bulanan_zoo_rr_data, ncol=12, byrow = T)
 mat_rata2 <- matrix(bulanan_rata2_zoo, ncol=12, byrow = T)
+mat_max <- matrix(bulanan_max_zoo, ncol=12, byrow = T)
+mat_max_annual <- matrix(tahunan_max_zoo, ncol=12, byrow = T)
+
 colnames(mat) <- month.abb
 rownames(mat) <- unique(format(time(bulanan_zoo_rr_data), "%Y"))
 
 colnames(mat_rata2) <- month.abb
 rownames(mat_rata2) <- unique(format(time(bulanan_rata2_zoo), "%Y"))
+
+colnames(mat_max) <- month.abb
+rownames(mat_max) <- unique(format(time(bulanan_max_zoo), "%Y"))
+
+
 matrixplot_jml_hjn <- print(matrixplot(mat, ColorRamp = "Precipitation",
                  main="Jumlah Curah Hujan Bulanan (mm)"))
+
+
+matrixplot_max_hjn <- print(matrixplot(mat_max, ColorRamp = "Precipitation",
+                 main="Curah Hujan Harian Maksimum (mm)"))
+
+matrixplot_max_hjn_annual <- print(matrixplot(mat_max_annual, ColorRamp = "Precipitation",
+                 main="Curah Hujan Harian Maksimum (mm)"))
 
 # output ke excel
 write.csv(mat,"output/jumlah_hujan_bulanan.csv")
 write.csv(mat_rata2,"output/rata2_hujan_bulanan.csv")
+write.csv(mat_max,"output/max_hujan_bulanan.csv")
+write.csv(mat_max_annual,"output/max_hujan_tahunan.csv")
 
 ```
 
