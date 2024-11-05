@@ -389,6 +389,25 @@ Karena ketersediaan data dengan rentang panjang yang berada di lokasi hanyalah d
 
 ## Debit Banjir di Lokasi Proyek
 
+Perhitungan debit banjir di lokasi proyek menggunakan metode yang
+disarankan oleh SNI 2415:2016 Tentang Tata Cara Perhitungan Debit Banjir yaitu
+metode hidrograf Snyder. Persamaan dari hidrograf
+satuan sintetik Snyder-Alexesey sebagai berikut:
+
+**Menentukan lag-time**
+
+tp = 1. 1 -- 1. 4(L. Lg) 0.3    dalam jam
+
+dimana:
+
+tp = log-time dan titik berat hujan efektif selama tr ke puncak Hidrograph dalam jam
+
+L = jarak dari stasiun ke batas teratas dari daerah pengaliran dalam km
+
+Lg =jarak dari stasiun ke titik berat daerah pengaliran dalam km
+
+![Hidrograf Satuan Sintetis Menurut Snyders](figures/hss_snyder.png){#fig-hss_snyder fig-align="center"}
+
 ## Debit Banjir di `r params$sungai`
 
 # Analisa Hidrolika
