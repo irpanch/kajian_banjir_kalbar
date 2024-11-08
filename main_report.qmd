@@ -176,11 +176,11 @@ matrixplot_jml_hjn <- print(matrixplot(mat, ColorRamp = "Precipitation",
                  main="Jumlah Curah Hujan Bulanan (mm)"))
 
 
-matrixplot_max_hjn <- print(matrixplot(mat_max, ColorRamp = "Precipitation",
-                 main="Curah Hujan Harian Maksimum (mm)"))
+#matrixplot_max_hjn <- print(matrixplot(mat_max, ColorRamp = #"Precipitation",
+#                 main="Curah Hujan Harian Maksimum (mm)"))
 
-matrixplot_max_hjn_annual <- print(matrixplot(mat_max_annual, ColorRamp = "Precipitation",
-                 main="Curah Hujan Harian Maksimum (mm)"))
+#matrixplot_max_hjn_annual <- print(matrixplot(mat_max_annual, # #ColorRamp = "Precipitation",
+#                 main="Curah Hujan Harian Maksimum (mm)"))
 
 # output ke excel
 write.csv(mat,"output/jumlah_hujan_bulanan.csv")
@@ -389,10 +389,7 @@ Karena ketersediaan data dengan rentang panjang yang berada di lokasi hanyalah d
 
 ## Debit Banjir di Lokasi Proyek
 
-Perhitungan debit banjir di lokasi proyek menggunakan metode yang
-disarankan oleh SNI 2415:2016 Tentang Tata Cara Perhitungan Debit Banjir yaitu
-metode hidrograf Snyder. Persamaan dari hidrograf
-satuan sintetik Snyder-Alexesey sebagai berikut:
+Perhitungan debit banjir di lokasi proyek menggunakan metode yang disarankan oleh SNI 2415:2016 Tentang Tata Cara Perhitungan Debit Banjir yaitu metode hidrograf Snyder. Persamaan dari hidrograf satuan sintetik Snyder-Alexesey sebagai berikut:
 
 **Menentukan lag-time**
 
@@ -407,6 +404,26 @@ L = jarak dari stasiun ke batas teratas dari daerah pengaliran dalam km
 Lg =jarak dari stasiun ke titik berat daerah pengaliran dalam km
 
 ![Hidrograf Satuan Sintetis Menurut Snyders](figures/hss_snyder.png){#fig-hss_snyder fig-align="center"}
+
+**Lama hujan efektif**
+
+Tp1 = tp + 0. 25(tr -- te)
+
+**Rise to peak**
+
+Tp = tp +0. 5. tr
+
+**Peak discharge (l/det), untuk hujan efektif 1 mm pada 1 km^2^**
+
+$$
+\displaylines{
+\mathrm{q}_{p}^{}={\frac{275.{C}_{p}}{tp}}\\
+}
+$$
+
+Peak discharge untuk hujan efektif 1 inci (25. 4 mm) pada daerah seluas A km2, dalam m^2^/det
+
+Setelah didapat bentuk hidrograph satuannya, maka dilakukan perhitungan debit banjir akibat hujan rencana.
 
 ## Debit Banjir di `r params$sungai`
 

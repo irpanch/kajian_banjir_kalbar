@@ -16,4 +16,5 @@ bisa gunakan package "extremStat", tapi cara installnya harus beberapa tahap.
 4) setelah itu load library extremeStat, lalu bisa digunakan.
 
 # next step
-> cari cara untuk mengeluarkan curah hujan harian maksimum tiap tahun. lalu plot analisa frekuensinya.
+> cari cara tabel curah hujan harian maksimum. yang sekarang masih error
+> 
