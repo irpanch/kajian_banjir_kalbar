@@ -321,7 +321,7 @@ Sn = Reduced standard deviation (sebagai fungsi dari banyaknya data n)
 
 ### Ringkasan Analisa Desain Curah Hujan
 
-Rekapitulasi Hasil perhitungan distribusi curah hujan rencana untuk perioda ulang 2, 5, 10, 25, 50, 100, 200 dan 1000  tahun dengan berbagai metode dapat dilihat pada Tabel dan Gambar Berikut.
+Rekapitulasi Hasil perhitungan distribusi curah hujan rencana untuk perioda ulang 2, 5, 10, 20, 25, 50, 100, 200 dan 1000  tahun dengan berbagai metode dapat dilihat pada Tabel dan Gambar Berikut.
 
 ```{r}
 #| label: fig-rainfall-pdf
@@ -355,10 +355,25 @@ plotLfit(dlf_P, cdf=TRUE, main = "Grafik CDF Curah Hujan Harian", xlab="Hujan (m
 #| echo: false
 
 dlf_P <- distLfit(data_filter$rahadi_oesman)
-dle <- distLextreme(dlf=dlf_P, RPs=c(2,10,100), gpd=F)
+dle <- distLextreme(dlf=dlf_P, RPs=c(2,5,10,20,25,50,100), gpd=F)
 plotLextreme(dle, nbest=6, log=TRUE,ylab="Hujan (mm)",xlab="Periode Kala Ulang (Tahun)",
              main=c("Analisa Frekuensi Curah Hujan Rencana",params$sta_hujan),legargs = list(cex=0.6,bg="transparent"))
-#dle$returnlev
+write.csv(dle$returnlev,"output/anfrek_hujan_rencana.csv")
+```
+
+```{r}
+#| label: tbl-hujan-rencana
+#| tbl-cap: "Curah Hujan Rencana"
+#| warning: false
+#| eval: true
+#| echo: false
+
+library(readr)
+anfrek_hujan_rencana <- read_csv("output/anfrek_hujan_rencana.csv")
+colnames(anfrek_hujan_rencana)[1] <- "Type of Distribution"
+library(gt)
+#fmt_number(anfrek_hujan_rencana,decimals = 3) # cari cara untuk angka desimal hanya cukup 3 digit.
+gt(head(anfrek_hujan_rencana,10))
 ```
 
 ### Penentuan Distribusi Hujan
